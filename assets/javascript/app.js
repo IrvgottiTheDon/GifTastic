@@ -4,7 +4,7 @@ var queryLimit = 10;
 var topics=[];
 
 
-function searchGiphy()  {
+function searchGiphy(query)  {
     event.preventDefault(); // prevent form submit from refreshing page
     document.getElementById("searchContent").innerHTML = ""; //Clear out current search results if any.
     document.getElementById("topics").innerHTML = ""; //Clear out topics array before printing new array
@@ -15,14 +15,18 @@ function searchGiphy()  {
     var offset = "0";
     var rating = "G";
     var lang = "en";
-    var query = $('#queryInput').val();
     
     
     //add the query to the topics array
     topics.push (query);
     for (var i=0;i<topics.length;i++){
 
-        document.getElementById("topics").innerHTML += "<button>" + topics[i]+" </button>";
+        //add a button for the query added to the topics array
+        document.getElementById("topics").innerHTML += '<button onclick=\"searchGiphy(\''+topics[i]+'\')\">'+topics[i]+'</button>';
+        
+        // Check and remove duplicates
+        topics = Array.from(new Set(topics));
+
     }
 
 

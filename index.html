@@ -17,7 +17,7 @@
     <h1>GifTastic Gif Generator</h1>
     <div id="topics"></div>
 
-    <form id="query-form" onsubmit="searchGiphy()">
+    <form id="query-form" onsubmit="searchGiphy($('#queryInput').val());">
         <label for="query">KEYWORD</label>
         <input name="query" id="queryInput" type="text" required>
         <input type="submit" id="button" value="search Giphy">
