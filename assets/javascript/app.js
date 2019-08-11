@@ -47,7 +47,7 @@ function searchGiphy(query)  {
         queryData = data;
 
         for (var i = 0; i < queryLimit; i++) {
-            document.getElementById("searchContent").innerHTML += '<img class="gif" src=' + queryData.data[i].images.original_still.url+'data-state="still data-still='+queryData.data[i].images.original_still.url+' data-animate='+queryData.data[i].images.original.url+'/>';
+            document.getElementById("searchContent").innerHTML += '<div class="object"><p class="rating">Rating: '+queryData.data[i].rating+'</p><img class="gif" src=' + queryData.data[i].images.original_still.url+'data-state="still data-still='+queryData.data[i].images.original_still.url+' data-animate='+queryData.data[i].images.original.url+'/>';
         }
 
         $(".gif").on("click", function() {
