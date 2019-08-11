@@ -1,11 +1,13 @@
 //javascript, jQuery
 var queryData;
 var queryLimit = 10;
+var topics=[];
 
 
 function searchGiphy()  {
     event.preventDefault(); // prevent form submit from refreshing page
     document.getElementById("searchContent").innerHTML = ""; //Clear out current search results if any.
+    document.getElementById("topics").innerHTML = ""; //Clear out topics array before printing new array
     
 
     var api_key = "Z4AgULFMGctT1JzJ14D7hWtktVj9HaWq";
@@ -14,6 +16,14 @@ function searchGiphy()  {
     var rating = "G";
     var lang = "en";
     var query = $('#queryInput').val();
+    
+    
+    //add the query to the topics array
+    topics.push (query);
+    for (var i=0;i<topics.length;i++){
+
+        document.getElementById("topics").innerHTML += "<button>" + topics[i]+" </button>";
+    }
 
 
     searchQuery += "api_key="+ api_key;
@@ -35,7 +45,7 @@ function searchGiphy()  {
         for (var i = 0; i < queryLimit; i++) {
             document.getElementById("searchContent").innerHTML += '<img class="gif" src=' + queryData.data[i].images.original_still.url+'data-state="still data-still='+queryData.data[i].images.original_still.url+' data-animate='+queryData.data[i].images.original.url+'/>';
         }
-        
+
         $(".gif").on("click", function() {
           // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
           var state = $(this).attr("data-state");
