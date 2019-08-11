@@ -15,9 +15,9 @@
 <body>
 
     <h1>GifTastic Gif Generator</h1>
-    <form id="query-form" onsubmit="searchGiphy(query)">
+    <form id="query-form" onsubmit="searchGiphy()">
         <label for="query">KEYWORD</label>
-        <input name="query" type="text" required>
+        <input name="query" id="queryInput" type="text" required>
         <input type="submit" id="button" value="search Giphy">
     </form>
     <div id="searchContent">
